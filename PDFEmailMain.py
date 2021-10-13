@@ -51,6 +51,10 @@ def putNamesInPDF(xm):
     page = existing_pdf.getPage(0)# add the "watermark" (which is the new pdf) on the existing page
     page.mergePage(new_pdf.getPage(0))
     output.addPage(page)
+    for p in range(1, existing_pdf.getNumPages()):
+        page = existing_pdf.getPage(p)
+        output.addPage(page)
+
     
     outputStream = open("%s录取通知书.pdf" % xm, "wb")# finally, write "output" to a real file
     output.write(outputStream)
